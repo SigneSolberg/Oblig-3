@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Oblig 1 </title>
+    <script src ="Index.js"></script>
+    <script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<h1> Bestilling av kinobilletter </h1>
+
+<!--Her oppretter jeg en nedtrekkstabell for å kunne velge film .-->
+<section>
+    <label for ="film"> Velg film: </label>
+    <select id = "film" onChange = "velgFilm()">
+        <option selected disabled> velg film her </option>
+        <option> Titanic </option>
+        <option> The Notebook</option>
+        <option> Harry potter and the Goblet of fire</option>
+        <option> Mamma mia </option>
+    </select>
+</section>
+<br>
+
+<section>
+    <label for = "antall"> Antall:  </label>
+    <input type = "text" id = "antall" style = "width: 15px;>" onchange = "antall()">
+    <div id ="feilAntall" style="color:red"></div>
+</section>
+<br>
+
+<!--Her oppretter jeg tabell sånn at fornavn, etternavn osv kommer under hverandre og legger inn feilmeldinger.-->
+<table>
+    <tr><td>Fornavn: </td><td><input type ="text" id="fornavn"/></td>
+        <td><div id ="feilFornavn" style="color:red"></div></td></tr>
+
+    <tr><td>Etternavn: </td><td><input type = "text" id="etternavn"/></td>
+        <td><div id ="feilEtternavn" style="color:red"></div></td></tr>
+
+    <tr><td>Telefonnr: </td><td><input type = "text" id="telefonnr"/></td>
+        <td><div id="feilTelefonnr" style="color:red"></div></td></tr>
+
+    <tr><td>Epost: </td><td><input type = "text" id="epost"/></td><td>
+        <div id ="feilEpost" style="color:red"></div></td></tr>
+</table>
+
+<br>
+<section>
+    <button onclick ="regKjøpeBillett()"> Kjøp billett </button>
+    <div id = "kjøpBillett" onclick ="kjøpeBillett()"></div>
+</section>
+<br>
+
+<!--Oppretter en felt for alle billetter og hvor alle billettene vises-->
+<h2> Alle billetter</h2>
+<div id ="viseKjøpteBilletter()"></div>
+
+<section>
+    <button onclick = "sletteAlleBilletter()"> Slett alle billettene</button>
+</section>
+
+</body>
+</html>
