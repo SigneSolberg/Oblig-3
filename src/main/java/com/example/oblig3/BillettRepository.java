@@ -11,18 +11,18 @@ import java.util.List;
 public class BillettRepository {
     @Autowired
     private JdbcTemplate db;
-
+//lager metoder for lagring av billetter og hvordan det skal skrives inn i SQL
     public void lagreBillett(Billett Billett) {
         String sql = "INSERT INTO Billett(film,antall, fornavn, etternavn, telefonnr, epost) VALUES(?,?,?,?,?,?)";
         db.update(sql, Billett.getFilm(), Billett.getAntall(), Billett.getFornavn(), Billett.getEtternavn(), Billett.getTelefonnr(), Billett.getEpost());
     }
-
+//Lager metode for å hente alle billettene og hvordan det skal skrives inn i SQL
     public List<Billett> hentAlleBilletter() {
         String sql = "SELECT * FROM Billettlagring ORDER BY etternavn";
         List<Billett> AlleBilletter = db.query(sql, new BeanPropertyRowMapper<>(Billett.class));
         return AlleBilletter;
     }
-
+    //Lager metode for å kunne slette alle billettene og hvordan det skal skrives inn i SQL
     public void slettAlleBilletter() {
         String sql = "DELETE FROM Billett";
         db.update(sql);
