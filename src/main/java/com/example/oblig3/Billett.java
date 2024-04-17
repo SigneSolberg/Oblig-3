@@ -9,7 +9,7 @@ public class Billett {
     private String telefonnr;
     private String epost;
 
-    public Billett(){}
+
 
 public Billett(String film, String antall, String fornavn, String etternavn, String telefonnr, String epost ){
         this.film = film;
@@ -19,11 +19,14 @@ public Billett(String film, String antall, String fornavn, String etternavn, Str
         this.telefonnr = telefonnr;
         this.epost = epost;
     }
-    public void setFilm(String film) {
-        this.film = film;
+    public Billett(){
+
     }
     public String getFilm() {
         return film;
+    }
+        public void setFilm(String film) {
+            this.film = film;
     }
     public void setAntall(String antall) {
         this.antall = antall;

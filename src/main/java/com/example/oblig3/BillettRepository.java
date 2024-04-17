@@ -1,7 +1,6 @@
 package com.example.oblig3;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -19,7 +18,7 @@ public class BillettRepository {
     }
 
     public List<Billett> hentAlleBilletter() {
-        String sql = "SELECT * FROM Billettlagring";
+        String sql = "SELECT * FROM Billettlagring ORDER BY etternavn";
         List<Billett> AlleBilletter = db.query(sql, new BeanPropertyRowMapper<>(Billett.class));
         return AlleBilletter;
     }
