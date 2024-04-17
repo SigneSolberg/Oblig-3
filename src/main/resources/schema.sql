@@ -2,7 +2,7 @@ CREATE TABLE Billettlagring
 (
     id INTEGER AUTO_INCREMENT NOT NULL,
     film VARCHAR (255) NOT NULL,
-    antall INTEGER AUTO_INCREMENT NOT NULL,
+    antall INTEGER NOT NULL,
     fornavn   VARCHAR(255) NOT NULL,
     etternavn VARCHAR(255) NOT NULL,
     telefonnr INTEGER AUTO_INCREMENT NOT NULL,
@@ -10,6 +10,3 @@ CREATE TABLE Billettlagring
     PRIMARY KEY (id)
 );
 
-
-
-)

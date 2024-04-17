@@ -1,40 +1,40 @@
 
+// tømme og fjerne feilmeldingene når man får kjøpt billett og brukeren har rettet opp i feil
+$("#feilAntall").html("");
+$("#feilFornavn").html("");
+$("#feilEtternavn").html("");
+$("#feilTelefonnr").html("");
+$("#feilEpost").html("");
 
-// tømme og fjerne feilmeldingene når man får kjøpt billett og skrevet inn rikitg informasjon
-document.getElementById("feilAntall").innerHTML="";
-document.getElementById("feilFornavn").innerHTML="";
-document.getElementById("feilEtternavn").innerHTML="";
-document.getElementById("feilTelefonnr").innerHTML="";
-document.getElementById("feilEpost").innerHTML="";
 
-        const antall = $("#antall").val();
-        const fornavn = $("#fornavn").val();
-        const etternavn = $("#etternavn").val();
-        const telefonnr = $("#telefonnr").val();
-        const epost = $("#epost").val();
+ const antall = $("#antall").val();
+ const fornavn = $("#fornavn").val();
+ const etternavn = $("#etternavn").val();
+ const telefonnr = $("#telefonnr").val();
+ const epost = $("#epost").val();
 
 
     //Her har jeg if-setninger (for å få frem feilmeldinger) for antall, fornavn,etternavn,telefonnr og epost.
     if (antall <= 0 || isNaN(antall)) {
-        document.getElementById("feilAntall").innerHTML
-            = "Feil, skriv inn et heltall";
+        $("#feilAntall").html("feil, skriv inn et heltall");
+
     }
-    if (fornavn.length === 0 || !isNaN(fornavn)) {
-        document.getElementById("feilFornavn").innerHTML
-            = "Feil skrevet, skriv KUN med bokstaver";
+    if (fornavn.length === 0 || !isNaN(fornavn)){
+        $("#feilFornavn").html("Feil skrevet, skriv KUN med bokstaver");
+
     }
     if (etternavn.length === 0 || !isNaN(etternavn)) {
-        document.getElementById("feilEtternavn").innerHTML
-            = "Feil etternavn, skriv KUN med bokstaver";
+        $("#feilEtternavn").html("Feil etternavn, skriv Kun med bokstaver");
+
     }
     if (telefonnr.length !== 8 || isNaN(telefonnr)) {
-        document.getElementById("feilTelefonnr").innerHTML
-            = "Feil telefonnr, skriv et telefonnr med 8 siffer";
+        $("#feilTelefonnr").html("Feil telefonNr, skriv et telefonnr med 8 siffer");
+
     }
     //Her har jeg brukt en REGEX for validering av epost
     if (!/\S+@\S+\.\S+/.test(epost)) {
-        document.getElementById("feilEpost").innerHTML
-            = "Feil epost, prøv på nytt";
+        $("#feilEpost").html("Feil epost, prøv på nytt");
+
 
 
 }
@@ -53,7 +53,7 @@ document.getElementById("feilEpost").innerHTML="";
         });
 
         //Viser de kjøpte billettene og ny informasjon
-        viseKjøpteBilletter();
+         viseKjøpteBilletter();
     }
 //Skriver kode for å tømme arrayet/slette info fra input boksene
 $("#film").value = "";
