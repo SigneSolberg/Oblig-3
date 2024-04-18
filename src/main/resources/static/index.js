@@ -1,5 +1,4 @@
 
-
 //viser de ulike valgene
 $(function () {
     VelgFilm();
@@ -10,8 +9,27 @@ $(function () {
     viseKjøpteBilletter();
 });
 
+//oppretter en funskjon for utformingen av hvordan nedtrekkslisten skal se ut og formateres
+function opprettFilm(valg) {
+    let ut = "<select id = 'film'>";
+    ut += "<option value = ''disabled selected>Velg film></option>";
+    for (const film of valg) {
+        ut += "<option value = '" + film + "'>" + film + "</option>";
+    }
+    ut += "</select>";
+    $("#film").html(ut);
+
+}
+//oppretter en funksjon for å velge film
+function VelgFilm() {
+    $.get("/VelgFilm", function (valg) {
+        opprettFilm(valg);
+    });
+}
+
 //oppretter en funksjon for lagring og legge til ny kunde til kjøpte billetter
 function regKjøpeBillett() {
+    let valideringFeil = false;
     const Billett = {
         film: $("#film").val(),
         antall: $("#antall").val(),
@@ -19,45 +37,49 @@ function regKjøpeBillett() {
         etternavn: $("#etternavn").val(),
         telefonnr: $("#telefonnr").val(),
         epost: $("#epost").val()
+
     };
+    const antall = $("#antall").val();
+    const fornavn = $("#fornavn").val();
+    const etternavn = $("#etternavn").val();
+    const telefonnr = $("#telefonnr").val();
+    const epost = $("#epost").val();
+
+
         //Her har jeg if-setninger (for å få frem feilmeldinger) for antall, fornavn,etternavn,telefonnr og epost.
         if (antall <= 0 || isNaN(antall)) {
             $("#feilAntall").html("feil, skriv inn et heltall");
+            valideringFeil = true;
 
         }
         if (fornavn.length === 0 || !isNaN(fornavn)) {
             $("#feilFornavn").html("Feil skrevet, skriv KUN med bokstaver");
-
+            valideringFeil = true;
         }
         if (etternavn.length === 0 || !isNaN(etternavn)) {
             $("#feilEtternavn").html("Feil etternavn, skriv Kun med bokstaver");
-
+            valideringFeil = true;
         }
         if (telefonnr.length !== 8 || isNaN(telefonnr)) {
             $("#feilTelefonnr").html("Feil telefonNr, skriv et telefonnr med 8 siffer");
-
+            valideringFeil = true;
         }
         //Her har jeg brukt en REGEX for validering av epost
         if (!/\S+@\S+\.\S+/.test(epost)) {
             $("#feilEpost").html("Feil epost, prøv på nytt");
+            valideringFeil = true;
         }
 
-
-            // tømme og fjerne feilmeldingene når man får kjøpt billett og brukeren har rettet opp i feil
+        // Tømme og fjerne feilmeldingene når man får kjøpt billett og brukeren har rettet opp i feil
             $("#feilAntall").html("");
             $("#feilFornavn").html("");
             $("#feilEtternavn").html("");
             $("#feilTelefonnr").html("");
             $("#feilEpost").html("");
 
-            const antall = $("#antall").val();
-            const fornavn = $("#fornavn").val();
-            const etternavn = $("#etternavn").val();
-            const telefonnr = $("#telefonnr").val();
-            const epost = $("#epost").val();
 
-            $.post("/lagreBillett", Billett, function () {
-                hentAlleBilletter();
+       $.post("/lagreBillett", Billett, function () {
+         hentAlleBilletter();
             });
             //Skriver kode for å tømme arrayet/slette info fra input boksene
             $("#film").value = "";
@@ -68,13 +90,13 @@ function regKjøpeBillett() {
             $("#epost").value = "";
 
         }
-// lager en funksjon som henter fra getmappingfunskjonen
+ // lager en funksjon som henter fra getmappingfunskjonen
         function viseKjøpteBilleter(){
     $.get("/hentAllebilletter",function(KjøpteBilletter){
         opprettBilletter(KjøpteBilletter);})
         }
 
-    //funksjon for å opprettelse og formatering av billetter
+ //funksjon for å opprettelse og formatering av billetter
     function opprettBilletter(KjøpteBilletter) {
         let ut = "<table><tr>" +
             "<th>Film</th><th>Antall</th>" +
@@ -90,32 +112,16 @@ function regKjøpeBillett() {
         }
         ut += "</table>";
         $("#Kjøptebilletter").html(ut);
-    }
-       //oppretter en funksjon for å velge film
-         function VelgFilm() {
-        $.get("/VelgFilm", function () {
-            opprettFilm(valg);
-        });
-    }
-        //oppretter en funskjon for utformingen av hvordan nedtrekkslisten skal se ut og formateres
-    function opprettFilm(valg) {
-        let ut = "<select id = 'film'>";
-        ut += "<option value = ''disabled selected>Velg film></option>";
-        for (const film of valg) {
-            ut += "<option value = '" + film + "'>" + film + "</option>";
-        }
-        ut += "</select>";
-        $("#film").html(ut);
 
-    }
+  }
     //Oppretter en funksjon for å slette de kjøpte billettene ved at man trykker på (slett alle billetter)
-            function slettAlleBilletter() {
-                $.get("/slettAlleBilletter", function () {
-                    viseKjøpteBilletter();
+     function slettAlleBilletter() {
+     $.get("/slettAlleBilletter", function () {
+      viseKjøpteBilletter();
 
-                });
-            }
-    //lager en funksjon for å vise de kjøpte billettene
+     });
+}
+    //lager en funksjon for å vise og hente opp de kjøpte billettene
         function hentAlleBilletter() {
             $.get("/hentAlleBilletter", function (kinoBilletter) {
                 BilletterReg = kinoBilletter;
@@ -124,7 +130,5 @@ function regKjøpeBillett() {
             $(document).ready(function () {
                 hentAlleBilletter()
             });
-
-
         }
 

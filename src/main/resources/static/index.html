@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title> Oblig 1 </title>
-    <script src ="Index.js"></script>
     <script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src ="index.js"></script>
 </head>
 <body>
 <h1> Bestilling av kinobilletter </h1>
 
 <!--Her oppretter jeg en nedtrekkstabell for å kunne velge film .-->
-    <label> Velg film </label>
+    <label> Velg film her </label>
     <div id = "film" ></div>
 
 <br>
-
 <section>
     <label for = "antall"> Antall:  </label>
     <input type = "text" id = "antall" style = "width: 15px;>" onchange = "antall()">
@@ -51,7 +50,5 @@
 <section>
     <button onclick = "slettAlleBilletter()"> Slett alle billettene</button>
 </section>
-
-
 </body>
 </html>
