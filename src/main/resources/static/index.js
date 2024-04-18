@@ -3,12 +3,8 @@
 $(function () {
     VelgFilm();
 });
-  /*
-//Viser de kjøpte billettene og ny informasjon
-$(function () {
-    viseKjøpteBilletter();
-});
-     */
+
+
 //oppretter en funskjon for utformingen av hvordan nedtrekkslisten skal se ut og formateres
 function opprettFilm(valg) {
     let ut = "<select id = 'film'>";
@@ -39,36 +35,35 @@ function regKjøpeBillett() {
         epost: $("#epost").val()
 
     };
-    /*
+
     const antall = $("#antall").val();
     const fornavn = $("#fornavn").val();
     const etternavn = $("#etternavn").val();
     const telefonnr = $("#telefonnr").val();
     const epost = $("#epost").val();
 
-     */
 
 
     //Her har jeg if-setninger (for å få frem feilmeldinger) for antall, fornavn,etternavn,telefonnr og epost.
-    if (antall <= 0 || isNaN(antall)) {
+    if (antall <= 0 || isNaN(Billett.antall)) {
         $("#feilAntall").html("feil, skriv inn et heltall");
         valideringFeil = true;
 
     }
-    if (fornavn.length === 0 || !isNaN(fornavn)) {
+    if (fornavn.length === 0 || !isNaN(Billett.fornavn)) {
         $("#feilFornavn").html("Feil skrevet, skriv KUN med bokstaver");
         valideringFeil = true;
     }
-    if (etternavn.length === 0 || !isNaN(etternavn)) {
+    if (etternavn.length === 0 || !isNaN(Billett.etternavn)) {
         $("#feilEtternavn").html("Feil etternavn, skriv Kun med bokstaver");
         valideringFeil = true;
     }
-    if (telefonnr.length !== 8 || isNaN(telefonnr)) {
+    if (telefonnr.length !== 8 || isNaN(Billett.telefonnr)) {
         $("#feilTelefonnr").html("Feil telefonNr, skriv et telefonnr med 8 siffer");
         valideringFeil = true;
     }
     //Her har jeg brukt en REGEX for validering av epost
-    if (!/\S+@\S+\.\S+/.test(epost)) {
+    if (!/\S+@\S+\.\S+/.test(Billett.epost)) {
         $("#feilEpost").html("Feil epost, prøv på nytt");
         valideringFeil = true;
     }
@@ -83,7 +78,7 @@ function regKjøpeBillett() {
     if (!valideringFeil) {
 
         $.post("/lagreBillett", Billett, function () {
-            hentAlleBilletter();
+            viseKjøpteBilletter();
         });
         //Skriver kode for å tømme arrayet/slette info fra input boksene
         $("#film").val();
@@ -95,7 +90,6 @@ function regKjøpeBillett() {
 
     }
 }
-
 function viseKjøpteBilletter(){
     $.get("/hentAllebilletter", function (KjøpteBilletter){
         opprettBilletter(KjøpteBilletter);
@@ -119,24 +113,19 @@ function viseKjøpteBilletter(){
         $("#Kjøptebilletter").html(ut);
 
   }
+
     //Oppretter en funksjon for å slette de kjøpte billettene ved at man trykker på (slett alle billetter)
      function slettAlleBilletter() {
      $.get("/slettAlleBilletter", function () {
           viseKjøpteBilletter();
 
      });
-
 }
     //lager en funksjon for å vise og hente opp de kjøpte billettene
         function hentAlleBilletter() {
-            $.get("/hentAlleBilletter", function (kinoBilletter) {
-                BilletterReg = kinoBilletter;
-                viseKjøpteBilletter();
+            $.get("/hentAlleBilletter", function (KjøpteBilletter) {
+                opprettBilletter(KjøpteBilletter);
             });
-
-            $(document).ready(function () {
-                hentAlleBilletter()
-            });
-
         }
 
+        

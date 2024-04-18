@@ -20,7 +20,7 @@ public class BillettRepository {
     public List<Billett> hentAlleBilletter() {
         String sql = "SELECT * FROM Billettlagring ORDER BY etternavn";
         List<Billett> hentAlleBilletter = db.query(sql, new BeanPropertyRowMapper<>(Billett.class));
-        return hentAlleBilletter();
+        return hentAlleBilletter;
     }
     //Lager metode for å kunne slette alle billettene og hvordan det skal skrives inn i SQL
     public void slettAlleBilletter() {
