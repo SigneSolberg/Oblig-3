@@ -86,16 +86,21 @@ function regKjøpeBillett() {
             hentAlleBilletter();
         });
         //Skriver kode for å tømme arrayet/slette info fra input boksene
-        $("#film").value = "";
-        $("#antall").value = "";
-        $("#fornavn").value = "";
-        $("#etternavn").value = "";
-        $("#telefonnr").value = "";
-        $("#epost").value = "";
+        $("#film").val();
+        $("#antall").val();
+        $("#fornavn").val();
+        $("#etternavn").val();
+        $("#telefonnr").val();
+        $("#epost").val();
 
     }
 }
 
+function viseKjøpteBilletter(){
+    $.get("/hentAllebilletter", function (KjøpteBilletter){
+        opprettBilletter(KjøpteBilletter);
+    })
+}
  //funksjon for å opprettelse og formatering av billetter
     function opprettBilletter(KjøpteBilletter) {
         let ut = "<table><tr>" +
@@ -117,7 +122,7 @@ function regKjøpeBillett() {
     //Oppretter en funksjon for å slette de kjøpte billettene ved at man trykker på (slett alle billetter)
      function slettAlleBilletter() {
      $.get("/slettAlleBilletter", function () {
-      viseKjøpteBilletter();
+          viseKjøpteBilletter();
 
      });
 

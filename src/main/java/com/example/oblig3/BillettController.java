@@ -30,7 +30,7 @@ public class BillettController {
     }
 
     @GetMapping("/hentAllebilletter")
-    public List<Billett> hentAllebilletter() {
+    public List<Billett> hentAlleBilletter() {
         return rep.hentAlleBilletter();
     }
 
