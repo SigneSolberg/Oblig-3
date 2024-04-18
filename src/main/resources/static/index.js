@@ -3,16 +3,16 @@
 $(function () {
     VelgFilm();
 });
-
+  /*
 //Viser de kjøpte billettene og ny informasjon
 $(function () {
     viseKjøpteBilletter();
 });
-
+     */
 //oppretter en funskjon for utformingen av hvordan nedtrekkslisten skal se ut og formateres
 function opprettFilm(valg) {
     let ut = "<select id = 'film'>";
-    ut += "<option value = ''disabled selected>Velg film></option>";
+    ut += "<option value = ''disabled selected> Velg film her </option>";
     for (const film of valg) {
         ut += "<option value = '" + film + "'>" + film + "</option>";
     }
@@ -39,62 +39,62 @@ function regKjøpeBillett() {
         epost: $("#epost").val()
 
     };
+    /*
     const antall = $("#antall").val();
     const fornavn = $("#fornavn").val();
     const etternavn = $("#etternavn").val();
     const telefonnr = $("#telefonnr").val();
     const epost = $("#epost").val();
 
-
-        //Her har jeg if-setninger (for å få frem feilmeldinger) for antall, fornavn,etternavn,telefonnr og epost.
-        if (antall <= 0 || isNaN(antall)) {
-            $("#feilAntall").html("feil, skriv inn et heltall");
-            valideringFeil = true;
-
-        }
-        if (fornavn.length === 0 || !isNaN(fornavn)) {
-            $("#feilFornavn").html("Feil skrevet, skriv KUN med bokstaver");
-            valideringFeil = true;
-        }
-        if (etternavn.length === 0 || !isNaN(etternavn)) {
-            $("#feilEtternavn").html("Feil etternavn, skriv Kun med bokstaver");
-            valideringFeil = true;
-        }
-        if (telefonnr.length !== 8 || isNaN(telefonnr)) {
-            $("#feilTelefonnr").html("Feil telefonNr, skriv et telefonnr med 8 siffer");
-            valideringFeil = true;
-        }
-        //Her har jeg brukt en REGEX for validering av epost
-        if (!/\S+@\S+\.\S+/.test(epost)) {
-            $("#feilEpost").html("Feil epost, prøv på nytt");
-            valideringFeil = true;
-        }
-
-        // Tømme og fjerne feilmeldingene når man får kjøpt billett og brukeren har rettet opp i feil
-            $("#feilAntall").html("");
-            $("#feilFornavn").html("");
-            $("#feilEtternavn").html("");
-            $("#feilTelefonnr").html("");
-            $("#feilEpost").html("");
+     */
 
 
-       $.post("/lagreBillett", Billett, function () {
-         hentAlleBilletter();
-            });
-            //Skriver kode for å tømme arrayet/slette info fra input boksene
-            $("#film").value = "";
-            $("#antall").value = "";
-            $("#fornavn").value = "";
-            $("#etternavn").value = "";
-            $("#telefonnr").value = "";
-            $("#epost").value = "";
+    //Her har jeg if-setninger (for å få frem feilmeldinger) for antall, fornavn,etternavn,telefonnr og epost.
+    if (antall <= 0 || isNaN(antall)) {
+        $("#feilAntall").html("feil, skriv inn et heltall");
+        valideringFeil = true;
 
-        }
- // lager en funksjon som henter fra getmappingfunskjonen
-        function viseKjøpteBilleter(){
-    $.get("/hentAllebilletter",function(KjøpteBilletter){
-        opprettBilletter(KjøpteBilletter);})
-        }
+    }
+    if (fornavn.length === 0 || !isNaN(fornavn)) {
+        $("#feilFornavn").html("Feil skrevet, skriv KUN med bokstaver");
+        valideringFeil = true;
+    }
+    if (etternavn.length === 0 || !isNaN(etternavn)) {
+        $("#feilEtternavn").html("Feil etternavn, skriv Kun med bokstaver");
+        valideringFeil = true;
+    }
+    if (telefonnr.length !== 8 || isNaN(telefonnr)) {
+        $("#feilTelefonnr").html("Feil telefonNr, skriv et telefonnr med 8 siffer");
+        valideringFeil = true;
+    }
+    //Her har jeg brukt en REGEX for validering av epost
+    if (!/\S+@\S+\.\S+/.test(epost)) {
+        $("#feilEpost").html("Feil epost, prøv på nytt");
+        valideringFeil = true;
+    }
+
+    // Tømme og fjerne feilmeldingene når man får kjøpt billett og brukeren har rettet opp i feil
+    $("#feilAntall").html("");
+    $("#feilFornavn").html("");
+    $("#feilEtternavn").html("");
+    $("#feilTelefonnr").html("");
+    $("#feilEpost").html("");
+
+    if (!valideringFeil) {
+
+        $.post("/lagreBillett", Billett, function () {
+            hentAlleBilletter();
+        });
+        //Skriver kode for å tømme arrayet/slette info fra input boksene
+        $("#film").value = "";
+        $("#antall").value = "";
+        $("#fornavn").value = "";
+        $("#etternavn").value = "";
+        $("#telefonnr").value = "";
+        $("#epost").value = "";
+
+    }
+}
 
  //funksjon for å opprettelse og formatering av billetter
     function opprettBilletter(KjøpteBilletter) {
@@ -120,6 +120,7 @@ function regKjøpeBillett() {
       viseKjøpteBilletter();
 
      });
+
 }
     //lager en funksjon for å vise og hente opp de kjøpte billettene
         function hentAlleBilletter() {
@@ -127,8 +128,10 @@ function regKjøpeBillett() {
                 BilletterReg = kinoBilletter;
                 viseKjøpteBilletter();
             });
+
             $(document).ready(function () {
                 hentAlleBilletter()
             });
+
         }
 

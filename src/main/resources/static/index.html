@@ -9,16 +9,23 @@
 <body>
 <h1> Bestilling av kinobilletter </h1>
 
+<br>
+
 <!--Her oppretter jeg en nedtrekkstabell for å kunne velge film .-->
-    <label> Velg film her </label>
-    <div id = "film" ></div>
+    <label> Velg film </label>
+    <select id = "film" ></select>
 
 <br>
+
+
 <section>
+
     <label for = "antall"> Antall:  </label>
     <input type = "text" id = "antall" style = "width: 15px;>" onchange = "antall()">
     <div id ="feilAntall" style="color:red"></div>
+
 </section>
+
 <br>
 
 <!--Her oppretter jeg tabell sånn at fornavn, etternavn osv kommer under hverandre og legger inn feilmeldinger.-->
@@ -39,13 +46,13 @@
 <br>
 <section>
     <button onclick ="regKjøpeBillett()"> Kjøp billett </button>
-    <div id = "BilletterReg" onclick ="kjøpeBillett()"></div>
+    <div id = "BilletterReg"></div>
 </section>
 <br>
 
 <!--Oppretter en felt for alle billetter og hvor alle billettene vises-->
 <h2> Alle billetter</h2>
-<div id ="VisKjøptebilletter"></div>
+<div id ="viseKjøptebilletter"></div>
 
 <section>
     <button onclick = "slettAlleBilletter()"> Slett alle billettene</button>

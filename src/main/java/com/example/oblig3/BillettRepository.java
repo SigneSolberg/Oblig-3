@@ -13,7 +13,7 @@ public class BillettRepository {
     private JdbcTemplate db;
 //lager metoder for lagring av billetter og hvordan det skal skrives inn i SQL
     public void lagreBillett(Billett Billett) {
-        String sql = "INSERT INTO Billett(film,antall, fornavn, etternavn, telefonnr, epost) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO Billettlagring(film,antall, fornavn, etternavn, telefonnr, epost) VALUES(?,?,?,?,?,?)";
         db.update(sql, Billett.getFilm(), Billett.getAntall(), Billett.getFornavn(), Billett.getEtternavn(), Billett.getTelefonnr(), Billett.getEpost());
     }
 //Lager metode for å hente alle billettene og hvordan det skal skrives inn i SQL
@@ -24,7 +24,7 @@ public class BillettRepository {
     }
     //Lager metode for å kunne slette alle billettene og hvordan det skal skrives inn i SQL
     public void slettAlleBilletter() {
-        String sql = "DELETE FROM Billett";
+        String sql = "DELETE FROM Billettlagring";
         db.update(sql);
     }
 }
