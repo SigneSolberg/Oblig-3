@@ -15,7 +15,7 @@ public class BillettController {
     private BillettRepository rep;
 //Lager et array for en drop down meny for å velge film
     @GetMapping("/VelgFilm")
-    public List <String> VelgFilmer(){
+    public List <String> VelgFilm(){
         List<String>listFilmer= new ArrayList<>();
         listFilmer.add("Titanic");
         listFilmer.add("The Notebook") ;
