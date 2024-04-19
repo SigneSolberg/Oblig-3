@@ -29,7 +29,7 @@ public class BillettController {
         rep.lagreBillett(Billett);
     }
 
-    @GetMapping("/hentAllebilletter")
+    @GetMapping("/hentAlleBilletter")
     public List<Billett> hentAlleBilletter() {
         return rep.hentAlleBilletter();
     }

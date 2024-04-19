@@ -10,7 +10,7 @@ public class Billett {
     private String epost;
 
 
-public Billett(int id, String film, String antall, String fornavn, String etternavn, String telefonnr, String epost ){
+public Billett( int id, String film, String antall, String fornavn, String etternavn, String telefonnr, String epost ){
         this.id = id;
         this.film = film;
         this.antall = antall;
@@ -19,11 +19,10 @@ public Billett(int id, String film, String antall, String fornavn, String ettern
         this.telefonnr = telefonnr;
         this.epost = epost;
     }
-    public Billett(){
+    public Billett() {
 
     }
-    public int getId(){
-
+    public int getId() {
         return id;
     }
     public void setId(int id) {
