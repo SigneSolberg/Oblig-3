@@ -3,14 +3,14 @@ package com.example.oblig3;
 public class Billett {
     private int id;
     private String film;
-    private String antall;
+    private int antall;
     private String fornavn;
     private String etternavn;
-    private String telefonnr;
+    private int telefonnr;
     private String epost;
 
 
-public Billett( int id, String film, String antall, String fornavn, String etternavn, String telefonnr, String epost ){
+public Billett( int id, String film, int antall, String fornavn, String etternavn, int telefonnr, String epost ){
         this.id = id;
         this.film = film;
         this.antall = antall;
@@ -34,10 +34,10 @@ public Billett( int id, String film, String antall, String fornavn, String etter
         public void setFilm(String film) {
             this.film = film;
     }
-    public void setAntall(String antall) {
+    public void setAntall(int antall) {
         this.antall = antall;
     }
-    public String getAntall() {
+    public int getAntall() {
         return antall;
     }
     public void setFornavn(String fornavn) {
@@ -52,10 +52,10 @@ public Billett( int id, String film, String antall, String fornavn, String etter
     public String getEtternavn() {
         return etternavn;
     }
-    public void setTelefonnr(String telefonnr) {
+    public void setTelefonnr(int telefonnr) {
         this.telefonnr = telefonnr;
     }
-    public String getTelefonnr() {
+    public int getTelefonnr() {
         return telefonnr;
     }
     public void setEpost(String epost) {

@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title> Oblig 1 </title>
     <script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src ="index.js"></script>
-
-
 </head>
+
 <body>
 <h1> Bestilling av kinobilletter </h1>
 
 <br>
-
 <!--Her oppretter jeg en nedtrekkstabell for å kunne velge film .-->
     <label> Velg film </label>
     <select id = "film" ></select>
-
 <br>
 
 <section>
@@ -47,16 +45,17 @@
 <br>
 <section>
     <button onclick ="regKjøpeBillett()"> Kjøp billett </button>
-    <div id = "BilletterReg"></div>
+    <div id = "Kjøptebilletter"></div>
 </section>
 <br>
 
 <!--Oppretter en felt for alle billetter og hvor alle billettene vises-->
 <h2> Alle billetter</h2>
-<div id ="viseKjøptebilletter"></div>
+<div id ="hentAlleBilletter"></div>
 
 <section>
     <button onclick = "slettAlleBilletter()"> Slett alle billettene</button>
+    <div id = "slettAlleBilletter"></div>
 </section>
 </body>
 </html>
