@@ -15,17 +15,16 @@
 <!--Her oppretter jeg en nedtrekkstabell for å kunne velge film .-->
     <label> Velg film </label>
     <select id = "film" ></select>
-<br>
 
 <section>
+    <br>
 
     <label for = "antall"> Antall:  </label>
     <input type = "text" id = "antall" style = "width: 15px;"/>
     <div id ="feilAntall" style="color:red"></div>
 
+    <br>
 </section>
-
-<br>
 
 <!--Her oppretter jeg tabell sånn at fornavn, etternavn osv kommer under hverandre og legger inn feilmeldinger.-->
 <table>
@@ -45,13 +44,13 @@
 <br>
 <section>
     <button onclick ="regKjøpeBillett()"> Kjøp billett </button>
-    <div id = "Kjøptebilletter"></div>
+    <div id = "hentAlleBilletter"></div>
 </section>
 <br>
 
 <!--Oppretter en felt for alle billetter og hvor alle billettene vises-->
 <h2> Alle billetter</h2>
-<div id ="hentAlleBilletter"></div>
+<div id ="KjøpteBilletter"></div>
 
 <section>
     <button onclick = "slettAlleBilletter()"> Slett alle billettene</button>
