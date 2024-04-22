@@ -3,7 +3,7 @@
 $(function () {
     VelgFilm();
 });
-//oppretter en funskjon for utformingen av hvordan nedtrekkslisten skal se ut og formateres
+//Oppretter en funskjon for utformingen av hvordan nedtrekkslisten skal se ut
 function opprettFilm(valg) {
     let ut = "<select id = 'film'>";
     ut += "<option value = '' disabled selected> Velg film her </option>";
@@ -14,14 +14,14 @@ function opprettFilm(valg) {
     $("#film").html(ut);
 }
 
-//oppretter en funksjon for å velge film
+//Oppretter en funksjon for å velge film
 function VelgFilm() {
     $.get("/VelgFilm", function (valg) {
         opprettFilm(valg);
     });
 }
 
-//oppretter en funksjon for lagring og legge til ny kunde til kjøpte billetter, ved å klikke på kjøp billett
+//Oppretter en funksjon for lagring og legge til ny kunde til kjøpte billetter, ved å klikke på kjøp billett
 function regKjøpeBillett() {
     const film = $("#film").val();
     const antall = $("#antall").val();
@@ -87,14 +87,14 @@ function regKjøpeBillett() {
         $("#epost").val("");
     }
 }
-        // funksjon for å vise og hente de kjøpte billettene
+        // Funksjon for å vise og hente de kjøpte billettene
         function viseKjøpteBilletter() {
             $.get("/hentAlleBilletter", function (KjøpteBilletter) {
                 opprettBilletter(KjøpteBilletter);
             });
         }
 
-        //funksjon for å opprettelse av array og formatering av billetter
+        //Funksjon for å opprettelse av array og formatering av billetter
         function opprettBilletter(KjøpteBilletter) {
             let ut = "<table><tr>" +
                 "<th>Film</th><th>Antall</th>" +

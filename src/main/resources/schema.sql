@@ -1,3 +1,4 @@
+
 CREATE TABLE Billettlagring
 (
     id INTEGER AUTO_INCREMENT NOT NULL,

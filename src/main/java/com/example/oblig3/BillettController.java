@@ -23,7 +23,7 @@ public class BillettController {
         listFilmer.add("Mamma Mia") ;
         return listFilmer;
     }
-//lager en
+
     @PostMapping("/lagreBillett")
     public void lagreBillett(Billett Billett) {
         rep.lagreBillett(Billett);

@@ -1,5 +1,6 @@
 package com.example.oblig3;
 
+//oppretter en klasse
 public class Billett {
     private int id;
     private String film;
@@ -9,7 +10,7 @@ public class Billett {
     private int telefonnr;
     private String epost;
 
-
+//Konstrutør for klassen Billett
 public Billett( int id, String film, int antall, String fornavn, String etternavn, int telefonnr, String epost ){
         this.id = id;
         this.film = film;
@@ -18,6 +19,8 @@ public Billett( int id, String film, int antall, String fornavn, String etternav
         this.etternavn = etternavn;
         this.telefonnr = telefonnr;
         this.epost = epost;
+
+  //Get og Set metoder
     }
     public Billett() {
 
