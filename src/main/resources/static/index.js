@@ -112,7 +112,7 @@ function regKjøpeBillett() {
             $("#KjøpteBilletter").html(ut);
         }
 
-//lager en funksjon for å vise og hente opp de kjøpte billettene
+         //Lager en funksjon for å vise og hente opp de kjøpte billettene
             function hentAlleBilletter() {
                 $.get("/hentAlleBilletter", function (data) {
                     opprettBilletter(data);
@@ -122,7 +122,7 @@ function regKjøpeBillett() {
                 hentAlleBilletter();
         });
 
-//Oppretter en funksjon for å slette de kjøpte billettene ved at man trykker på (slett alle billetter)
+        //Oppretter en funksjon for å slette de kjøpte billettene ved at man trykker på (slett alle billetter)
         function slettAlleBilletter() {
             $.get("/slettAlleBilletter", function () {
                 viseKjøpteBilletter();
