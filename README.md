@@ -11,4 +11,4 @@ Kort beskrivelse av applikasjon:
 Har laget en applikajson for kjøp og salg av kinobilletter.
 Man kan velge film og legge til/skrive inn informasjon om seg selv, 
 se sine kjøpte billetter og slette alle billettene. Dette er en utvidelse fra oblig 1 og 
-2, hvor arrayet fra tjener/server er erstattet med en tabell i relasjonsdatabase.
+2, hvor arrayet er erstattet med en tabell i relasjonsdatabase.
